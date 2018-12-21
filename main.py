@@ -88,8 +88,8 @@ def result():
 
 #アプリを実行
 if __name__ == '__main__':
-    app.debug = True #本番ではデバッグモードをオフにする。
-    #app.run(host='0.0.0.0') #どこからでもアクセス可能にする。
-    app.run()
+    #app.debug = True #本番ではデバッグモードをオフにする。
+    app.run(host='0.0.0.0') #どこからでもアクセス可能にする。
+    #app.run()
             
         
