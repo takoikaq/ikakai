@@ -6,9 +6,10 @@ from keras.applications.vgg16 import VGG16
 from keras.models import Model, Sequential
 from keras import optimizers
 from keras.models import load_model
-import cv2
-
+#import cv2
+from PIL import Image
 import tensorflow as tf
+from keras.preprocessing import image
 
 
 #Flask関連
@@ -64,16 +65,28 @@ def upload_file(): #アクセス時に関数を実行
         f = request.files['file'] #アップロードされた画像をファイルオブジェクトとして格納
         filepath = UPLOAD_FOLDER + secure_filename(f.filename) #ファイルパスを作る
         f.save(filepath) #ファイルパスの保存
-        img = cv2.imread(filepath) #画像の読み込み
+        #img = cv2.imread(filepath) #画像の読み込み
         #b,g,r = cv2.split(img) #b,g,r順となっているのでr,g,bに変換する
         #img = cv2.merge([r,g,b]) #画像をr,g,b順にする
-        img = cv2.resize(img, (75,75))
+        #img = cv2.resize(img, (75,75))
+
+        form_img = Image.open(f)
+        img_rev = form_img.resize((75, 75))
+        img_rev=img_rev.convert('RGB')
+        print(img_rev)
+        x = image.img_to_array(img_rev)
+        x = np.expand_dims(x, axis=0)
+        x = x / 255.0
         
         global graph
         #スレッド間を共有するため、graphを開きます
         with graph.as_default():
-            score = model.predict(np.array([img]))
-            pred = np.argmax(score[0])
+            score = model.predict(x)
+            print(score)
+            pred = np.argmax(score)            
+                        
+            #score = model.predict(np.array([img]))
+            #pred = np.argmax(score[0])
         
         #result.htmlに値を渡し判別結果を表示する。判別結果は%で表現したいのでscoreは100倍にしてから渡す。"""
         return render_template('result.html', pred = pred, score = score * 100 )
