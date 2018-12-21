@@ -1,0 +1,38 @@
+/* 背景画像の設定 */
+body {
+    background-image: url('./cat-and-dog-493633_960_720.jpg');
+    /* background-repeat: no-repeat; */
+    background-position: center center;
+    background-size: cover;
+    color:white;
+    font-family: cursive;
+}
+
+.work{
+    
+
+}
+
+section{
+    text-align: center
+}
+
+.headline{
+    margin-bottom: 0px;
+}
+
+.headline h1{
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
+.main{
+    margin-top: 50px;
+}
+
+.main h1{
+    font-size: 35px;
+    margin-top: 25px;
+    
+    
+}

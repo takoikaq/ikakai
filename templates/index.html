@@ -1,0 +1,26 @@
+<!DOCTYPE html><html lang="ja">
+
+{% extends "layout.html" %}
+{% block content %}
+<!-- 見出しと説明 -->
+<div class="work">
+    <section class="headline">
+        <h1>犬猫判別器</h1>
+        <h2>~AIが画像内の動物が犬か猫か判別します！~</h2>
+    </section>
+    
+    <!-- 入力フォーム -->
+    <section class="main">
+        <form class="form-inline" method="post" enctype="multipart/form-data">                    
+            <label for="exampleInputFile">画像を選んで下さい</label>                   
+            <!-- 画像選択 -->
+            <!--入力データはファイル形式、それをmain.pyで定義してある変数fileに格納する。画像系のファイルのみ受け付ける。  -->
+            <input type="file" name="file" accept="image/*">                                        
+            <!-- 送信ボタン -->                    
+            <button type="submit" class="btn btn-default">送信</button>                
+        </form>
+        <h1>送信ボタンを押して判別開始！</h1>
+    </section>
+</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="ja">
+
+{% extends "layout.html" %}
+{% block content %}
+<!-- 判定結果 -->
+{% if pred == 0 %}
+<h2>この動物は 犬 で、犬度 {{score[0][0]}} %です。</h2>
+{% elif pred == 1 %}
+<h2>この動物は 猫 で、猫度 {{score[0][1]}} %です。</h2>
+{% endif %}  
+
+<!-- ホーム画面に戻る -->
+<a class='head_a'  href=''>戻る</a>
+
+{% endblock %}
